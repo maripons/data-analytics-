@@ -1,13 +1,10 @@
+-- Nivell 1
+-- Exercici 3
+-- Utilizando sólo subconsultas (sin utilizar JOIN):
 
+-- 3.2 Lista las empresas que han realizado transacciones por un amount superior a la media 
+-- de todas las transacciones.
 
-select distinct c.country, t.amount
-from company c
-join transaction t
-on t.company_id = c.id;
-
-
--- 3.2 Lista las empresas que han realizado transacciones 
--- por un amount superior a la media de todas las transacciones.
 select c.company_name
 from company c
 where id IN(
