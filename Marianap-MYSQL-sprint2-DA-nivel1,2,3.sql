@@ -1,7 +1,7 @@
 -- Nivel 1 
 -- Ejercicio 1.1
 -- Tu tarea es diseñar y crear una tabla llamada "credit_card" que almacene detalles cruciales sobre las tarjetas de crédito. 
--- OBS: PRIMARY KEY  Para ello, se define una columna o un conjunto de ellas como su identificador. El identificador es por tanto, un valor o valores que no pueden repetirse y que permiten obtener una fila de datos de entre todas las que hay en la tabla. 
+--                       OBS: PRIMARY KEY  Para ello, se define una columna o un conjunto de ellas como su identificador. El identificador es por tanto, un valor o valores que no pueden repetirse y que permiten obtener una fila de datos de entre todas las que hay en la tabla. 
 
  CREATE TABLE credit_card (
   id VARCHAR(8),
@@ -13,24 +13,30 @@
 );
 
 
--- Ejercicio 1.2
+
 -- La nueva tabla debe ser capaz de identificar de forma única cada tarjeta y establecer una relación adecuada con las otras dos tablas ("transaction" y "company"). 
 
-USE transactions;
-show tables;
-show columns from  
-show create table 
-rename table x to y;
 
-
-
-
+-- Después de crear la tabla será necesario que ingreses la información del documento denominado "datos_introducir_credit". 
+-- Recuerda mostrar el diagrama y realizar una breve descripción del mismo.
 
 
 -- Nivel 1 
 -- Ejercicio 2
 -- El departamento de Recursos Humanos ha identificado un error en el número de cuenta asociado a su tarjeta de crédito con ID CcU-2938.
 -- La información que debe mostrarse para este registro es: TR323456312213576817699999. Recuerda mostrar que el cambio se realizó.
+
+
+update credit_card
+set iban = 'TR323456312213576817699999'
+where id = 'CcU-2938';
+
+-- confirmación de que se ha actualizado:
+select id, iban
+from credit_card
+where id = 'CcU-2938';
+
+
 
 
 
@@ -46,6 +52,17 @@ rename table x to y;
 -- longitud	-117.999
 -- amunt	111.11
 -- declined	0
+
+
+-- COMENTARIOS: (NO TERMINADO)
+-- el ejercicios no ofrece timestamp*
+-- primero tengo que crear un nuevo id en credit card con el valor CcU-9999
+-- luego usar join (?) or constraint para juntar las dos tablas   
+
+INSERT INTO transaction (id, credit_card_id, company_id,  user_id, lat, longitude, amount, declined  )
+VALUES ('108B1D1D-5B23-A76C-55EF-C568E49A99DD', 'CcU-9999', 'b-9999', '9999', '829.999', '-117.999', '111.11', '0' );
+
+
 
 
 -- Nivel 2
